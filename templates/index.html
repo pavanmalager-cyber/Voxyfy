@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070910">
+<title>VOXYFY | Shikamaru AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="noise"></div>
+<div class="ambient a"></div><div class="ambient b"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="logo"><span>V</span> VOXYFY <small>AI</small></div>
+  <button class="new-chat" id="newChat"><b>＋</b> New conversation</button>
+  <div class="side-title">WORKSPACE</div>
+  <button class="nav active"><i>◈</i> Shikamaru Chat</button>
+  <button class="nav"><i>⌁</i> Explore</button>
+  <button class="nav"><i>◇</i> Tools</button>
+  <button class="nav"><i>▣</i> Library</button>
+  <button class="nav"><i>⚙</i> Settings</button>
+  <div class="side-title history-title">RECENT</div>
+  <div id="history"></div>
+  <div class="profile"><div class="profile-avatar">P</div><div><b>Pavan</b><span>Personal workspace</span></div></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <button class="icon-btn mobile-only" id="menu">☰</button>
+  <div class="online"><span></span> VOXY CORE <em>ONLINE</em></div>
+  <div class="top-actions">
+    <select id="model">
+      <option value="gpt-5.6-sol">Sol · Flagship</option>
+      <option value="gpt-5.6-terra">Terra · Balanced</option>
+      <option value="gpt-5.6-luna">Luna · Fast</option>
+    </select>
+    <button class="icon-btn" id="theme">◐</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">STRATEGIC AI COMPANION</div>
+    <h1>Think less.<br><span>Do more.</span></h1>
+    <p>Shikamaru turns complicated problems into clear next moves. Calm reasoning, sharp structure, and a futuristic workspace built around you.</p>
+    <div class="chips">
+      <button data-prompt="Plan my day around study, coding and breaks.">Plan my day <b>↗</b></button>
+      <button data-prompt="Explain a difficult concept simply, then test me.">Explain something <b>↗</b></button>
+      <button data-prompt="Help me debug a project step by step.">Debug a project <b>↗</b></button>
+    </div>
+  </div>
+
+  <div class="character-stage">
+    <div class="ring r1"></div><div class="ring r2"></div><div class="scan"></div>
+    <div class="hud h1">IQ // ANALYTICAL</div>
+    <div class="hud h2">MODE // FOCUSED</div>
+    <div class="kairo">
+      <div class="hair"></div>
+      <div class="head">
+        <div class="brow bl"></div><div class="brow br"></div>
+        <div class="eye el"></div><div class="eye er"></div>
+        <div class="nose"></div><div class="mouth"></div>
+      </div>
+      <div class="neck"></div>
+      <div class="jacket"></div>
+      <div class="neon-seam"></div>
+    </div>
+    <div class="character-label"><strong>Shikamaru</strong><span>YOUR AI COMPANION</span></div>
+    <div class="state"><span></span><b id="state">CALM</b><i>ANALYTICAL</i></div>
+  </div>
+</section>
+
+<section class="workspace">
+  <div class="workspace-head">
+    <div><b>Conversation</b><span id="substate">Ready when you are.</span></div>
+    <button id="clear">Clear</button>
+  </div>
+  <div class="messages" id="messages"></div>
+  <form id="composer" class="composer">
+    <textarea id="input" rows="1" placeholder="Ask Shikamaru anything..."></textarea>
+    <button class="send" aria-label="Send">➤</button>
+  </form>
+  <div class="tools">
+    <span>⌕ Web-ready architecture</span><span>◈ Model: <b id="modelLabel">Sol</b></span><span>⌁ Shikamaru personality</span>
+  </div>
+  <div class="disclaimer">AI can make mistakes. Verify important information.</div>
+</section>
+</main>
+<script>window.DEFAULT_MODEL={{ default_model|tojson }};</script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
